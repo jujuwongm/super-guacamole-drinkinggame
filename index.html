@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+    </style>
+    <title>Drinking Game</title>
+    
+  </head>
+
+  <body class="container">
+    <h1 class="text-center">Drinking Game</h1>
+    <p id="currentCard" class="text-center"></p>
+    <p id="kingsCup" class="text-center"></p>
+    <br />
+    <button id="drawCardButton" class="btn btn-primary center-block">
+      Draw a Card
+    </button>
+
+    <script>
+      var deck = [
+        "Ace",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "Jack",
+        "Queen",
+        "King",
+      ];
+      var currentCard = "";
+      var kingsCup = 0;
+      var questionMaster = "";
+
+      document.getElementById("currentCard").innerHTML =
+        "Current Card: No card drawn yet";
+      document.getElementById("kingsCup").innerHTML = "King's Cup: 0 drinks";
+
+      document
+        .getElementById("drawCardButton")
+        .addEventListener("click", function () {
+          currentCard = deck[Math.floor(Math.random() * deck.length)];
+          switch (currentCard) {
+            case "Ace":
+              var rhymeWord = prompt(
+                "Choose a word that everyone has to rhyme with, the first person who can't think of a word drinks!"
+              );
+              alert(
+                "The word to rhyme with is: " + rhymeWord + "! Start rhyming!"
+              );
+              break;
+            case "2":
+              var twoTruths = prompt(
+                "You tell two truths and one lie, the rest of the players have to guess which one is the lie, the person who guesses wrong drinks!"
+              );
+              alert(
+                "The three statements are: " + twoTruths + "! Start guessing!"
+              );
+              break;
+            case "3":
+              var threeWordStory = prompt(
+                "You have to tell a story using only three words, the first person who can't think of a story drinks!"
+              );
+              alert("Start telling a three word story!");
+              break;
+            case "4":
+              alert("All the ladies drink!");
+              break;
+            case "5":
+              alert("All the guys drink!");
+              break;
+            case "6":
+              alert("Everyone drinks!");
+              break;
+            case "7":
+              var sevenHeaven = prompt(
+                "Choose someone to be 'heaven', they can make someone drink at any time until someone else draws a 7."
+              );
+
+            case "8":
+              var eightMate = prompt(
+                "Choose a mate to drink with you every time you drink."
+              );
+              alert(
+                eightMate +
+                  " is your mate, you drink together every time either of you drinks!"
+              );
+              break;
+            case "9":
+              var nineRhyme = prompt(
+                "Start saying a word, then going around the circle, each person has to say a word that rhymes with the previous word, the first person who can't think of a word drinks!"
+              );
+              alert("Start with the word: " + nineRhyme + "!");
+              break;
+            case "10":
+              alert(
+                "Everyone has to start counting up from 1, but you can only say a number if it's a multiple of 10 (10, 20, 30, etc.). The first person who messes up drinks!"
+              );
+              break;
+            case "Jack":
+              alert(
+                "Everyone has to start making up a rule, but you can only say a rule if it starts with the letter J (e.g. 'Jack says you can't say the word drink'). The first person who messes up drinks!"
+              );
+              break;
+            case "Queen":
+              var questionMaster = prompt(
+                "Choose someone to be the Question Master, they can ask any question they want at any time, if someone answers they drink."
+              );
+              alert(
+                questionMaster +
+                  " is the Question Master, they can ask any question they want at any time and if someone answers they drink."
+              );
+              break;
+            case "King":
+              kingsCup++;
+              alert("King's Cup: " + kingsCup + " drinks");
+              if (kingsCup === 4) {
+                alert("King's Cup is full, everyone drinks!");
+                kingsCup = 0;
+              }
+              break;
+          }
+          document.getElementById("currentCard").innerHTML =
+            "Current Card: " + currentCard;
+          document.getElementById("kingsCup").innerHTML =
+            "King's Cup: " + kingsCup + " drinks";
+        });
+    </script>
+  </body>
+</html>
